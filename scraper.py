@@ -1,3 +1,9 @@
+"""
+scraper.py: třetí projekt webscrapingu pro Engeto
+author: Kamil Hnátek
+email: kamil.hnatek@gmail.com
+discord: irenicus87
+"""
 import requests
 from bs4 import BeautifulSoup
 import csv
@@ -73,7 +79,7 @@ def parse_row_data(row, headers_code, headers_location, writer, headers_written)
         okrsek, registered, envelopes, valid, additional_headers, additional_data = fetch_detail_data(detail_url)
 
         if not headers_written[0]:
-            writer.writerow(['code', 'location', 'okrsek', 'registered', 'envelopes', 'valid'] + additional_headers)
+            writer.writerow(['code', 'location', 'okrsky', 'registered', 'envelopes', 'valid'] + additional_headers)
             headers_written[0] = True
 
         writer.writerow([code, location, okrsek, registered, envelopes, valid] + additional_data)
