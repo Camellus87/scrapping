@@ -123,11 +123,18 @@ def scrape_election_data(url, output_file):
 def main():
     """
     Hlavní funkce programu. Zpracuje vstupní argumenty a spustí scraping.
+    Ověří, že uživatel zadal oba povinné argumenty (URL a výstupní soubor).
     """
     parser = argparse.ArgumentParser(description='Election data scraper')
     parser.add_argument('url', type=str, help='URL to scrape')
     parser.add_argument('output_file', type=str, help='Output CSV file name')
     args = parser.parse_args()
+
+    # Kontrola, zda byly zadány oba argumenty
+    if not args.url or not args.output_file:
+        print("Error: Musíte zadat URL ke stažení dat a název výstupního CSV souboru.")
+        print("Použití: python script.py <URL> <output_file.csv>")
+        return
 
     output_dir = os.path.dirname(args.output_file)
     if output_dir:
